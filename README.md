@@ -62,11 +62,14 @@ vi /etc/chrony.conf
 server master iburst
 
 修改
+
 /# Allow NTP client access from local network.
+
 allow 192.168.138.0/24
 
 修改
 /# Serve time even if not synchronized to a time source.
+
 local stratum 10
 
 systemctl enable chronyd.service
