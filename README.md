@@ -1,8 +1,7 @@
 # Create-HadoopHA
 搭建Hadoop集群用于大数据项目学习
 
-一、安装三台虚拟机
-
+一、安装三台虚拟机\n
 
 1、centos7
 
