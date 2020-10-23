@@ -252,7 +252,7 @@ vim core-site.xml
  
  \<name>io.file.buffer.size\</name>
  
- \<value>131702</value>
+ \<value>131702\</value>
  
  \</property>
 
@@ -268,9 +268,9 @@ export JAVA_HOME=/opt/java/java1.8
 
 \<property>
 
-\<name>dfs.namenode.name.dir</name>
+\<name>dfs.namenode.name.dir\</name>
 
-\<value>/opt/hadoop/name</value>
+\<value>/opt/hadoop/name\</value>
 
 \</property>
 
@@ -278,9 +278,9 @@ export JAVA_HOME=/opt/java/java1.8
 
 \<property>
 
-\<name>dfs.datanode.data.dir</name>
+\<name>dfs.datanode.data.dir\</name>
 
-\<value>/opt/hadoop/data</value>
+\<value>/opt/hadoop/data\</value>
 
 \</property>
 
@@ -288,9 +288,9 @@ export JAVA_HOME=/opt/java/java1.8
 
 \<property>
 
-\<name>dfs.replication</name>
+\<name>dfs.replication\</name>
 
-\<value>2</value>
+\<value>2\</value>
 
 \</property>
 
@@ -298,9 +298,9 @@ export JAVA_HOME=/opt/java/java1.8
 
 \<property>
 
-\<name>dfs.secondary.http.address</name>
+\<name>dfs.secondary.http.address\</name>
 
-\<value>master:50090</value>
+\<value>master:50090\</value>
 
 \</property>
 
@@ -308,9 +308,9 @@ export JAVA_HOME=/opt/java/java1.8
 
 \<!-- 开启hdfs的web访问接口。默认端口是50070 , 一般不配 , 使用默认值-->
 
-\<name>dfs.webhdfs.enabled</name>
+\<name>dfs.webhdfs.enabled\</name>
 
-\<value>true</value>
+\<value>true\</value>
 
 \</property>
 
@@ -322,9 +322,9 @@ export JAVA_HOME=/opt/java/java1.8
 
 \<!-- 指定mr框架为yarn方式,Hadoop二代MP也基于资源管理系统Yarn来运行 -->
 
-\<name>mapreduce.framework.name</name>
+\<name>mapreduce.framework.name\</name>
 
-\<value>yarn</value>
+\<value>yarn\</value>
 
 \</property>
 
@@ -334,9 +334,9 @@ export JAVA_HOME=/opt/java/java1.8
 
 \<property>
 
-\<name>mapreduce.jobhistory.address</name>
+\<name>mapreduce.jobhistory.address\</name>
 
-\<value>master:10020</value>
+\<value>master:10020\</value>
 
 \</property>
 
@@ -344,9 +344,9 @@ export JAVA_HOME=/opt/java/java1.8
 
 \<property>
 
-\<name>mapreduce.jobhistory.webapp.address</name>
+\<name>mapreduce.jobhistory.webapp.address\</name>
 
-\<value>node1:19888</value>
+\<value>node1:19888\</value>
 
 \</property>
 
@@ -354,99 +354,99 @@ export JAVA_HOME=/opt/java/java1.8
 
 \<property>
 
-\<name>yarn.resourcemanager.hostname</name>
+\<name>yarn.resourcemanager.hostname\</name>
 
-\<value>master</value>
-
-\</property>
-
- \<property>
-
-\<name>yarn.resourcemanager.address</name>
-
-\<value>${yarn.resourcemanager.hostname}:8032</value>
+\<value>master\</value>
 
 \</property>
 
  \<property>
 
-\<name>yarn.resourcemanager.scheduler.address</name>
+\<name>yarn.resourcemanager.address\</name>
 
-\<value>${yarn.resourcemanager.hostname}:8030</value>
-
-\</property>
-
- \<property>
-
-\<name>yarn.resourcemanager.webapp.address</name>
-
-\<value>${yarn.resourcemanager.hostname}:8088</value>
+\<value>${yarn.resourcemanager.hostname}:8032\</value>
 
 \</property>
 
  \<property>
 
-\<description>The https adddress of the RM web application.</description>
+\<name>yarn.resourcemanager.scheduler.address\</name>
 
-\<name>yarn.resourcemanager.webapp.https.address</name>
+\<value>${yarn.resourcemanager.hostname}:8030\</value>
 
-\<value>${yarn.resourcemanager.hostname}:8090</value>
+\</property>
+
+ \<property>
+
+\<name>yarn.resourcemanager.webapp.address\</name>
+
+\<value>${yarn.resourcemanager.hostname}:8088\</value>
+
+\</property>
+
+ \<property>
+
+\<description>The https adddress of the RM web application.\</description>
+
+\<name>yarn.resourcemanager.webapp.https.address\</name>
+
+\<value>${yarn.resourcemanager.hostname}:8090\</value>
 
 \</property>
 
  \<property>
  
- \<name>yarn.resourcemanager.resource-tracker.address</name>
+ \<name>yarn.resourcemanager.resource-tracker.address\</name>
  
- \<value>${yarn.resourcemanager.hostname}:8031</value>
+ \<value>${yarn.resourcemanager.hostname}:8031\</value>
  
  \</property>
 
  \<property>
  
- \<name>yarn.resourcemanager.admin.address</name>
+ \<name>yarn.resourcemanager.admin.address\</name>
  
- \<value>${yarn.resourcemanager.hostname}:8033</value>
- 
- \</property>
-
- \<property>
- 
- \<name>yarn.nodemanager.aux-services</name>
- 
- \<value>mapreduce_shuffle</value>
+ \<value>${yarn.resourcemanager.hostname}:8033\</value>
  
  \</property>
 
  \<property>
  
- \<name>yarn.scheduler.maximum-allocation-mb</name>
+ \<name>yarn.nodemanager.aux-services\</name>
  
- \<value>2048</value>
+ \<value>mapreduce_shuffle\</value>
+ 
+ \</property>
+
+ \<property>
+ 
+ \<name>yarn.scheduler.maximum-allocation-mb\</name>
+ 
+ \<value>2048\</value>
  
  \</property>
 
  \<property>
  
- \<name>yarn.nodemanager.vmem-pmem-ratio</name>
+ \<name>yarn.nodemanager.vmem-pmem-ratio\</name>
  
- \<value>2.1</value>
+ \<value>2.1\</value>
  
  \</property>
 
  \<property>
 
-\<name>yarn.nodemanager.resource.memory-mb</name>
+\<name>yarn.nodemanager.resource.memory-mb\</name>
 
-\<value>2048</value>
+\<value>2048\</value>
 
 \</property>
 
  \<property>
 
-\<name>yarn.nodemanager.vmem-check-enabled</name>
+\<name>yarn.nodemanager.vmem-check-enabled\</name>
 
-\<value>false</value>
+\<value>false\</value>
 
 \</property>
 
