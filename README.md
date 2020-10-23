@@ -63,8 +63,7 @@ server master iburst
 
 修改
 
-/# Allow NTP client access from local network.
-
+\# Allow NTP client access from local network.
 allow 192.168.138.0/24
 
 修改
