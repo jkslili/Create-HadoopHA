@@ -264,7 +264,7 @@ export JAVA_HOME=/opt/java/java1.8
 
 ##### 修改 hdfs-site.xml
 
-<!-- namenode数据的存放地点。也就是namenode元数据存放的地方，记录了hdfs系统中文件的元数据-->
+\<!-- namenode数据的存放地点。也就是namenode元数据存放的地方，记录了hdfs系统中文件的元数据-->
 
 <property>
 
