@@ -143,3 +143,31 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub 目标用户@目标主机名或IP地址
 
 ssh　目标主机名
 
+三、安装jdk(使用的jdk为1.8)
+
+每一台节点都要安装jdk
+
+master节点
+
+上传jdk-8u131-linux-x64.tar.gz
+
+tar -xzvf jdk-8u131-linux-x64.tar.gz
+
+mkdir /opt/java
+
+mv /opt/jdk1.8.0_131/ /opt/java/java1.8
+
+配置java的环境变量
+
+vi /etc/profile
+
+#set java environment
+
+JAVA_HOME=/opt/java/java1.8
+
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+PATH=$JAVA_HOME/bin:$PATH
+
+export JAVA_HOME CLASSPATH PATH
+
