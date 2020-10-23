@@ -234,23 +234,23 @@ vim core-site.xml
 
 \<property>
   
-  \<name>fs.default.name</name>
+  \<name>fs.default.name\</name>
   
-  \<value>hdfs://master:9000</value>
+  \<value>hdfs://master:9000\</value>
  
  \</property>
  
  \<property>
  
- \<name>hadoop.tmp.dir</name>
+ \<name>hadoop.tmp.dir\</name>
  
- \<value>/opt/hadoop/tmp</value>
+ \<value>/opt/hadoop/tmp\</value>
  
  \</property>
  
  \<property>
  
- \<name>io.file.buffer.size</name>
+ \<name>io.file.buffer.size\</name>
  
  \<value>131702</value>
  
