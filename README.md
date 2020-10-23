@@ -1,24 +1,24 @@
 # Create-HadoopHA
 搭建Hadoop集群用于大数据项目学习
 
-#一、安装三台虚拟机
+## 一、安装三台虚拟机
 
-1、centos7
+### 1、centos7
 
-2、VMware12
+### 2、VMware12
 
-3、最小化安装
+### 3、最小化安装
   
   好处：1、系统干净  2、消耗资源少
  
-4、详细过程略
+### 4、详细过程略
 
 
-#二、配置网络环境
+## 二、配置网络环境
 
-1、设置为静态IP
+### 1、设置为静态IP
 
-第一台Master
+#### 第一台Master
 
 IPADDR=192.168.138.101
 
@@ -28,7 +28,7 @@ GATEWAY=192.168.138.2
 
 DNS1=192.168.138.2
 
-第二台node1
+#### 第二台node1
 
 IPADDR=192.168.138.102
 
@@ -38,7 +38,7 @@ GATEWAY=192.168.138.2
 
 DNS1=192.168.138.2
 
-第三台node2
+#### 第三台node2
 
 IPADDR=192.168.138.103
 
@@ -48,7 +48,7 @@ GATEWAY=192.168.138.2
 
 DNS1=192.168.138.2
 
-2、添加IP地址和主机名映射
+### 2、添加IP地址和主机名映射
 
 192.168.138.101  master
 
@@ -58,19 +58,19 @@ DNS1=192.168.138.2
 
 注意：3、4、5、6、7步骤所有节点都要操作
 
-3、关闭防火墙
+### 3、关闭防火墙
 
 systemctl stop firewalld
 
 systemctl disable firewalld
 
-4、关闭NetWorkManager
+### 4、关闭NetWorkManager
 
 systemctl stop NetworkManager
 
 systemctl disable NetworkManager
 
-5、关闭SELinux服务
+### 5、关闭SELinux服务
 
 vi /etc/sysconfig/selinux
 
@@ -78,13 +78,13 @@ SELINUX=enforcing
 
 SELINUX=disabled
 
-6、配置时间同步
+### 6、配置时间同步
 
 查看是否系统有chrony
 
 rpm -qa|grep chrony  (如果没有，请挂着centos镜像文件进行安装)
 
-主节点
+#### 主节点
 
 vi /etc/chrony.conf
 
@@ -120,7 +120,7 @@ systemctl start chronyd.service
 
 timedatectl　set-timezone　Asia/Shanghai
 
-node1、node2操作（与maser的时间同步）
+#### node1、node2操作（与maser的时间同步）
 
 vi /etc/chrony.conf
 
@@ -142,7 +142,7 @@ systemctl enable chronyd.service
 systemctl start chronyd.service
 
 
-7、配置免密登录
+### 7、配置免密登录
 
 ssh-keygen -t rsa
 
@@ -150,11 +150,11 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub 目标用户@目标主机名或IP地址
 
 ssh　目标主机名
 
-#三、安装jdk(使用的jdk为1.8)
+## 三、安装jdk(使用的jdk为1.8)
 
 每一台节点都要安装jdk
 
-master节点
+#### master节点
 
 上传jdk-8u131-linux-x64.tar.gz到/opt
 
@@ -184,7 +184,7 @@ source /etc/profile
 
 java -version
 
-将安装好的java复制到node1、node2
+#### 将master安装好的java复制到node1、node2
 
 scp -r /opt/java/java1.8/ root@node1:/opt/java/
 
