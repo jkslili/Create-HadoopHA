@@ -212,7 +212,7 @@ mv hadoop-2.7.3 hadoop/hadoop2.7
 
 vi /etc/profile
 
-#set hadoop environment
+\#set hadoop environment
 
 HADOOP_HOME=/opt/hadoop/hadoop2.7
 
@@ -232,29 +232,29 @@ vim core-site.xml
 
 添加配置参数
 
-<property>
+\<property>
   
-  <name>fs.default.name</name>
+  \<name>fs.default.name</name>
   
-  <value>hdfs://master:9000</value>
+  \<value>hdfs://master:9000</value>
  
- </property>
+ \</property>
  
- <property>
+ \<property>
  
- <name>hadoop.tmp.dir</name>
+ \<name>hadoop.tmp.dir</name>
  
- <value>/opt/hadoop/tmp</value>
+ \<value>/opt/hadoop/tmp</value>
  
- </property>
+ \</property>
  
- <property>
+ \<property>
  
- <name>io.file.buffer.size</name>
+ \<name>io.file.buffer.size</name>
  
- <value>131702</value>
+ \<value>131702</value>
  
- </property>
+ \</property>
 
 ##### 修改 hadoop-env.sh
 
@@ -266,189 +266,189 @@ export JAVA_HOME=/opt/java/java1.8
 
 \<!-- namenode数据的存放地点。也就是namenode元数据存放的地方，记录了hdfs系统中文件的元数据-->
 
-<property>
+\<property>
 
-<name>dfs.namenode.name.dir</name>
+\<name>dfs.namenode.name.dir</name>
 
-<value>/opt/hadoop/name</value>
+\<value>/opt/hadoop/name</value>
 
-</property>
+\</property>
 
-<!-- datanode数据的存放地点。也就是block块存放的目录了-->
+\<!-- datanode数据的存放地点。也就是block块存放的目录了-->
 
-<property>
+\<property>
 
-<name>dfs.datanode.data.dir</name>
+\<name>dfs.datanode.data.dir</name>
 
-<value>/opt/hadoop/data</value>
+\<value>/opt/hadoop/data</value>
 
-</property>
+\</property>
 
- <!-- hdfs的副本数设置。也就是上传一个文件，其分割为block块后，每个block的冗余副本个数-->
+ \<!-- hdfs的副本数设置。也就是上传一个文件，其分割为block块后，每个block的冗余副本个数-->
 
-<property>
+\<property>
 
-<name>dfs.replication</name>
+\<name>dfs.replication</name>
 
-<value>2</value>
+\<value>2</value>
 
-</property>
+\</property>
 
- <!-- secondary namenode的http通讯地址-->
+ \<!-- secondary namenode的http通讯地址-->
 
-<property>
+\<property>
 
-<name>dfs.secondary.http.address</name>
+\<name>dfs.secondary.http.address</name>
 
-<value>master:50090</value>
+\<value>master:50090</value>
 
-</property>
+\</property>
 
- <property>
+ \<property>
 
-<!-- 开启hdfs的web访问接口。默认端口是50070 , 一般不配 , 使用默认值-->
+\<!-- 开启hdfs的web访问接口。默认端口是50070 , 一般不配 , 使用默认值-->
 
-<name>dfs.webhdfs.enabled</name>
+\<name>dfs.webhdfs.enabled</name>
 
-<value>true</value>
+\<value>true</value>
 
-</property>
+\</property>
 
 ##### 修改mapred-site.xml
 
 复制mapred-site.xml.template文件并重命名为mapred-site.xml
 
-<property>
+\<property>
 
-<!-- 指定mr框架为yarn方式,Hadoop二代MP也基于资源管理系统Yarn来运行 -->
+\<!-- 指定mr框架为yarn方式,Hadoop二代MP也基于资源管理系统Yarn来运行 -->
 
-<name>mapreduce.framework.name</name>
+\<name>mapreduce.framework.name</name>
 
-<value>yarn</value>
+\<value>yarn</value>
 
-</property>
+\</property>
 
- <!-- JobHistory Server ============================================================== -->
+ \<!-- JobHistory Server ============================================================== -->
 
-<!-- 配置 MapReduce JobHistory Server 地址 ，默认端口10020 -->
+\<!-- 配置 MapReduce JobHistory Server 地址 ，默认端口10020 -->
 
-<property>
+\<property>
 
-<name>mapreduce.jobhistory.address</name>
+\<name>mapreduce.jobhistory.address</name>
 
-<value>master:10020</value>
+\<value>master:10020</value>
 
-</property>
+\</property>
 
-<!-- 配置 MapReduce JobHistory Server web ui 地址， 默认端口19888 -->
+\<!-- 配置 MapReduce JobHistory Server web ui 地址， 默认端口19888 -->
 
-<property>
+\<property>
 
-<name>mapreduce.jobhistory.webapp.address</name>
+\<name>mapreduce.jobhistory.webapp.address</name>
 
-<value>node1:19888</value>
+\<value>node1:19888</value>
 
-</property>
+\</property>
 
 ##### 修改yarn-site.xml文件
 
-<property>
+\<property>
 
-<name>yarn.resourcemanager.hostname</name>
+\<name>yarn.resourcemanager.hostname</name>
 
-<value>master</value>
+\<value>master</value>
 
-</property>
+\</property>
 
- <property>
+ \<property>
 
-<name>yarn.resourcemanager.address</name>
+\<name>yarn.resourcemanager.address</name>
 
-<value>${yarn.resourcemanager.hostname}:8032</value>
+\<value>${yarn.resourcemanager.hostname}:8032</value>
 
-</property>
+\</property>
 
- <property>
+ \<property>
 
-<name>yarn.resourcemanager.scheduler.address</name>
+\<name>yarn.resourcemanager.scheduler.address</name>
 
-<value>${yarn.resourcemanager.hostname}:8030</value>
+\<value>${yarn.resourcemanager.hostname}:8030</value>
 
-</property>
+\</property>
 
- <property>
+ \<property>
 
-<name>yarn.resourcemanager.webapp.address</name>
+\<name>yarn.resourcemanager.webapp.address</name>
 
-<value>${yarn.resourcemanager.hostname}:8088</value>
+\<value>${yarn.resourcemanager.hostname}:8088</value>
 
-</property>
+\</property>
 
- <property>
+ \<property>
 
-<description>The https adddress of the RM web application.</description>
+\<description>The https adddress of the RM web application.</description>
 
-<name>yarn.resourcemanager.webapp.https.address</name>
+\<name>yarn.resourcemanager.webapp.https.address</name>
 
-<value>${yarn.resourcemanager.hostname}:8090</value>
+\<value>${yarn.resourcemanager.hostname}:8090</value>
 
-</property>
+\</property>
 
- <property>
+ \<property>
  
- <name>yarn.resourcemanager.resource-tracker.address</name>
+ \<name>yarn.resourcemanager.resource-tracker.address</name>
  
- <value>${yarn.resourcemanager.hostname}:8031</value>
+ \<value>${yarn.resourcemanager.hostname}:8031</value>
  
- </property>
+ \</property>
 
- <property>
+ \<property>
  
- <name>yarn.resourcemanager.admin.address</name>
+ \<name>yarn.resourcemanager.admin.address</name>
  
- <value>${yarn.resourcemanager.hostname}:8033</value>
+ \<value>${yarn.resourcemanager.hostname}:8033</value>
  
- </property>
+ \</property>
 
- <property>
+ \<property>
  
- <name>yarn.nodemanager.aux-services</name>
+ \<name>yarn.nodemanager.aux-services</name>
  
- <value>mapreduce_shuffle</value>
+ \<value>mapreduce_shuffle</value>
  
- </property>
+ \</property>
 
- <property>
+ \<property>
  
- <name>yarn.scheduler.maximum-allocation-mb</name>
+ \<name>yarn.scheduler.maximum-allocation-mb</name>
  
- <value>2048</value>
+ \<value>2048</value>
  
- </property>
+ \</property>
 
- <property>
+ \<property>
  
- <name>yarn.nodemanager.vmem-pmem-ratio</name>
+ \<name>yarn.nodemanager.vmem-pmem-ratio</name>
  
- <value>2.1</value>
+ \<value>2.1</value>
  
- </property>
+ \</property>
 
- <property>
+ \<property>
 
-<name>yarn.nodemanager.resource.memory-mb</name>
+\<name>yarn.nodemanager.resource.memory-mb</name>
 
-<value>2048</value>
+\<value>2048</value>
 
-</property>
+\</property>
 
- <property>
+ \<property>
 
-<name>yarn.nodemanager.vmem-check-enabled</name>
+\<name>yarn.nodemanager.vmem-check-enabled</name>
 
-<value>false</value>
+\<value>false</value>
 
-</property>
+\</property>
 
 ##### 修改slaves
 
