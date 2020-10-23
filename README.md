@@ -54,10 +54,11 @@ rpm -qa|grep chrony  (如果没有，请挂着centos镜像文件进行安装)
 vi /etc/chrony.conf
 
 注释
-#server 0.centos.pool.ntp.org iburst
-#server 1.centos.pool.ntp.org iburst
-#server 2.centos.pool.ntp.org iburst
-#server 3.centos.pool.ntp.org iburst
+\#server 0.centos.pool.ntp.org iburst
+\#server 1.centos.pool.ntp.org iburst
+\#server 2.centos.pool.ntp.org iburst
+\#server 3.centos.pool.ntp.org iburst
+
 添加
 server master iburst
 
@@ -67,7 +68,7 @@ server master iburst
 allow 192.168.138.0/24
 
 修改
-/# Serve time even if not synchronized to a time source.
+\# Serve time even if not synchronized to a time source.
 
 local stratum 10
 
@@ -79,10 +80,11 @@ node1、node2操作（与maser的时间同步）
 vi /etc/chrony.conf
 
 注释
-#server 0.centos.pool.ntp.org iburst
-#server 1.centos.pool.ntp.org iburst
-#server 2.centos.pool.ntp.org iburst
-#server 3.centos.pool.ntp.org iburst
+\#server 0.centos.pool.ntp.org iburst
+\#server 1.centos.pool.ntp.org iburst
+\#server 2.centos.pool.ntp.org iburst
+\#server 3.centos.pool.ntp.org iburst
+
 添加
 server master iburst
 
