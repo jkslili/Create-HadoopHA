@@ -1,13 +1,20 @@
 # Create-HadoopHA
 搭建Hadoop集群用于大数据项目学习
 
-一、安装三台虚拟机
+#一、安装三台虚拟机
 
 1、centos7
 
 2、VMware12
 
-二、配置网络环境
+3、最小化安装
+  
+  好处：1、系统干净  2、消耗资源少
+ 
+4、详细过程略
+
+
+#二、配置网络环境
 
 1、设置为静态IP
 
@@ -143,13 +150,13 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub 目标用户@目标主机名或IP地址
 
 ssh　目标主机名
 
-三、安装jdk(使用的jdk为1.8)
+#三、安装jdk(使用的jdk为1.8)
 
 每一台节点都要安装jdk
 
 master节点
 
-上传jdk-8u131-linux-x64.tar.gz
+上传jdk-8u131-linux-x64.tar.gz到/opt
 
 tar -xzvf jdk-8u131-linux-x64.tar.gz
 
@@ -170,4 +177,22 @@ CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 PATH=$JAVA_HOME/bin:$PATH
 
 export JAVA_HOME CLASSPATH PATH
+
+source /etc/profile
+
+验证java
+
+java -version
+
+将安装好的java复制到node1、node2
+
+scp -r /opt/java/java1.8/ root@node1:/opt/java/
+
+scp /etc/profile root@node1:/etc/
+
+scp -r /opt/java/java1.8/ root@node2:/opt/java/
+
+scp /etc/profile root@node2:/etc/
+
+在node1、node2执行source /etc/profile
 
