@@ -34,8 +34,6 @@ IPADDR=192.168.138.102
 
 NETMASK=255.255.255.0
 
-### 四、
-
 GATEWAY=192.168.138.2
 
 DNS1=192.168.138.2
@@ -469,3 +467,15 @@ scp -r /opt/hadoop/hadoop2.7/ root@node1:/opt/hadoop
 node1、node2执行source /etc/profile
 
 ##### 在master /opt/hadoop 创建 name data tmp 三个文件夹
+
+### 到此Hadoop就安装完成，开始验证
+
+master 执行hadoop namenode -format 初始化
+
+执行start-dfs.sh 、 start-yarn.sh 启动hadoop(也可以使用start-all.sh)
+
+在各个节点执行jps查看服务是否启动
+
+停止Hadoop 执行 stop-all.sh
+
+# 其他组件的安装，在其他文件讲解
