@@ -1,0 +1,136 @@
+# 安装Spark组件
+
+安装spark组件与Java类似
+
+## 安装Scala（使用的是scala2.1）
+
+将下载好的安装包上传到/opt
+
+在/opt目录下
+
+tar -xzvf scala-2.13.3.tgz
+
+mkdir scala
+
+mv scala-2.13.3 scala/scala2.13
+
+### 配置scala环境变量
+
+vi /etc/profile
+
+\#set scala environment
+
+SCALA_HOME=/opt/scala/scala2.13
+
+PATH=$SCALA_HOME/bin:$PATH
+
+export SCALA_HOME PATH
+
+### 使环境变量生效，并查看scala是否安装成功
+
+source /etc/profile
+
+scala -version
+
+## 安装Spark
+
+将下载好的安装包上传到/opt
+
+在/opt目录下
+
+tar -xzvf spark-2.4.7-bin-hadoop2.7.tgz 
+
+mkdir spark
+
+mv spark-2.4.7-bin-hadoop2.7 /opt/spark/spark2.4
+
+### 配置环境变量
+
+vi /etc/profile
+
+#set spark environment
+SPARK_HOME=/opt/spark/spark2.4
+PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
+export SPARK_HOME PATH
+
+使环境变量生效
+
+source /etc/profile
+
+### 修改配置文件
+
+cd /opt/spark/spark2.4/conf/
+
+#### 修改spark-env.sh
+
+若没有spark-env.sh文件，复制spark-env.sh.template文件重命名
+
+cp spark-env.sh.template spark-env.sh
+
+在spark-env.sh文件中添加以下内容
+
+export SCALA_HOME=/opt/scala/scala2.13    
+
+export JAVA_HOME=/opt/java/java1.8
+
+export HADOOP_HOME=/opt/hadoop/hadoop2.7    
+
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop  
+
+export SPARK_HOME=/opt/spark/spark2.4
+
+export SPARK_MASTER_IP=master
+
+ps:SPARK_MASTER_IP spark的主节点IP
+
+SPARK_EXECUTOR_MEMORY 指定spark的运行内存 （在这里，由于电脑内存较低，让系统自己分配） 
+
+上面的路径根据自己实际安装路径配置
+
+### 修改slaves
+
+若没有slaves文件，复制slaves.template文件重命名
+
+cp slaves.template  slaves
+
+vi slaves
+
+node1
+node2
+
+### 将主节点master的配置同步到从节点(node1,node2）
+
+同步前在从节点创建scala、spark文件
+
+#### 同步环境配置
+
+scp /etc/profile root@node1:/etc/
+
+scp /etc/profile root@node2:/etc/
+   
+source /etc/profile
+
+#### 同步scala
+
+scp -r /opt/scala/scala2.13/ root@node2:/opt/scala/
+
+scp -r /opt/scala/scala2.13/ root@node1:/opt/scala/
+
+#### 同步spark
+
+scp -r /opt/spark/spark2.4/ root@node1:/opt/spark/
+
+scp -r /opt/spark/spark2.4/ root@node2:/opt/spark/
+
+### 启动Spark
+
+start-all.sh
+
+### 页面查看启动结果
+
+master的IP:8080
+
+### 停止Spark
+stop-all.sh
+
+## Spark安装完成！！！
