@@ -76,6 +76,41 @@ export JAVA_CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 
 在web查看，看是否有文件储存（我测试时，修改报错以后运行，web没有看到flume生成的文件，但是也没新的报错，等我琢磨出来再更新）
 
+修改：
+我重新换了一个测试，可能是第一个写的测试文件参数与我实际的虚拟机不符合
+
+将flume-file-hdfs.conf重写，内容如下：
+# Name the components on this agent
+a2.sources = r2
+a2.sinks = k2
+a2.channels = c2
+
+# Describe/configure the source
+a2.sources.r2.type = netcat
+#读取的文件地址,这儿我设置的是hive的日志目录
+a2.sources.r2.bind =localhost
+#脚本的启动目录
+a2.sources.r2.port=2222
+
+# Describe the sink
+a2.sinks.k2.type = logger
+
+# Use a channel which buffers events in memory
+a2.channels.c2.type = memory
+a2.channels.c2.capacity = 1000
+a2.channels.c2.transactionCapacity = 100
+
+# Bind the source and sink to the channel
+a2.sources.r2.channels = c2
+a2.sinks.k2.channel = c2
+
+执行命令
+/opt/flume/flume1.9/bin/flume-ng agent --conf /opt/flume/flume1.9/conf/ --name a2 --conf-file /opt/flume/flume-file-hdfs.conf -Dflume.root.logger=INFO,console
+
+打开新的一个终端，telnet localhost 2222
+输入信息 hello world！！！
+之前创建agent的终端会输出相应的“Hello world!”字符串
+
 flume测试完成！！！
 
 2、kafka测试
