@@ -49,4 +49,33 @@ a2.channels.c2.transactionCapacity = 100
 a2.sources.r2.channels = c2
 a2.sinks.k2.channel = c2
 
+/opt/flume/flume1.9/bin/flume-ng agent --conf /opt/flume/flume1.9/conf/ --name a2 --conf-file /opt/flume/flume-file-hdfs.conf 
+
+中途报错
+错误: 找不到或无法加载主类 org.apache.flume.tools.GetJavaProperty或者Error: Could not find or load main class org.apache.flume.tools.GetJavaProperty
+
+### 度娘说法以下：
+    一般来说是由于装了HBASE等工具的原因
+    [root@master conf]# flume-ng version
+    Error: Could not find or load main class org.apache.flume.tools.GetJavaProperty
+
+解决方法：
+
+将Hbase的配置文件hbas-env.sh修改为：
+1、将hbase的hbase.env.sh的一行配置注释掉
+# Extra Java CLASSPATH elements. Optional.
+#export HBASE_CLASSPATH=/home/hadoop/hbase/conf
+ 
+2、或者将HBASE_CLASSPATH改为JAVA_CLASSPATH,配置如下
+# Extra Java CLASSPATH elements. Optional.
+export JAVA_CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+修改hbase以后，再次运行
+
 在开一个服务器窗口，启动hive：
+
+在web查看，看是否有文件储存（我测试时，修改报错以后运行，web没有看到flume生成的文件，但是也没新的报错，等我琢磨出来再更新）
+
+flume测试完成！！！
+
+2、kafka测试
