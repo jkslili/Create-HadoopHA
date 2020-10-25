@@ -79,3 +79,22 @@ export JAVA_CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 flume测试完成！！！
 
 2、kafka测试
+
+在master执行
+./kafka-topics.sh --create --zookeeper master:2181,node1:2181,node2:2181 --replication-factor 3 --partitions 3 --topic test  //创建topic-test
+
+查看已创建的topic列表
+./kafka-topics.sh --list --zookeeper localhost:2181
+
+所有节点启动kafka
+./kafka-server-start.sh -daemon ../config/server.properties &
+
+master启动生产者
+./kafka-console-producer.sh --broker-list master:9092,node1:9092,node2:9092 --topic test
+
+其他节点启动消费者
+./kafka-console-consumer.sh --bootstrap-server master:9092,node1:9092,node2:9092 --from-beginning --topic test
+
+其他节点启动消费者可以看到生产者产生的数据
+
+kafka测试完成！！！
