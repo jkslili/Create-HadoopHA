@@ -1,0 +1,22 @@
+安装flume
+
+1、上传解压安装包
+
+2、配置环境变量
+
+3、复制jar
+为了flume与Hadoop的交互，需要将/opt/hadoop/hadoop2.7/share/hadoop/common和/opt/hadoop/hadoop2.7/share/hadoop/hdfs目录下的6个jar复制到/opt/flume/flume1.9/lib目录下
+#hadoop-common-2.7.3.jar
+#commons-configuration-1.6.jar
+#commons-io-2.4.jar
+#hadoop-auth-2.7.3.jar
+#hadoop-hdfs-2.7.3.jar
+#htrace-core-3.1.0-incubating.jar
+
+4、更改配置文件
+
+## 编辑flume-env.sh
+若没有flume-env.sh,复制flume-env.sh.template并重命名
+export JAVA_HOME=/opt/java/java1.8
+
+flume 安装结束！！！
