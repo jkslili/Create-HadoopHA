@@ -1,5 +1,16 @@
 Linux镜像使用的是CentOS-7-x86_64-DVD-1804.iso
 
-其他软件版本上传了一张截图HadoopHA.png
+其他软件版本
+hadoop2.7.3
+java1.8
+scala2.13.3
+spark2.4.7
+zookeeper3.4.9
+mysql5.7.18
+mysql驱动是mysql-connector-java-5.1.46
+hbase2.3.2
+hive2.3.7
+flume1.9.0
+kafka2.12-2.6.0
 
 关于flume、Kafka的测试，额外用一份文档说明一下
