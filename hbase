@@ -1,0 +1,73 @@
+###过程与之前类似，相似步骤不在过多讲解###
+1、上传解压hbase
+
+2、修改环境变量
+
+3、修改hbase配置文件
+
+##修改hbase-env.sh文件
+
+export JAVA_HOME=/opt/java/java1.8
+
+export HADOOP_HOME=/opt/hadoop/hadoop2.7
+
+export HBASE_HOME=/opt/hbase/hbase2.3
+
+export HBASE_CLASSPATH=/opt/hadoop/hadoop2.7/etc/hadoop
+
+export HBASE_PID_DIR=/root/hbase/pids
+
+export HBASE_MANAGES_ZK=false
+
+"export HBASE_MANAGES_ZK=false"表示是否使用Hbase自带的Zookeeper，此处设置为false，使用此前安装的Zookeeper，其他配置根据自己实际情况设置、
+
+## 修改hbase-site.xml文件
+
+<property>
+ <name>hbase.rootdir</name>
+ <value>hdfs://master:9000/hbase</value>
+ <description>The directory shared byregion servers.</description>
+</property>
+
+ <!-- hbase端口 -->
+<property>
+ <name>hbase.zookeeper.property.clientPort</name>
+ <value>2181</value>
+</property>
+
+<!-- 超时时间 -->
+<property>
+ <name>zookeeper.session.timeout</name>
+ <value>120000</value>
+</property>
+
+<!--防止服务器时间不同步出错 -->
+<property>
+<name>hbase.master.maxclockskew</name>
+<value>150000</value>
+</property>
+
+<!-- 集群主机配置 -->
+<property>
+ <name>hbase.zookeeper.quorum</name>
+ <value>master,node1,node2</value>
+</property>
+
+<!--   路径存放 -->
+<property>
+ <name>hbase.tmp.dir</name>
+ <value>/opt/hbase/tmp</value>
+</property>
+
+<!-- true表示分布式 -->
+<property>
+ <name>hbase.cluster.distributed</name>
+ <value>true</value>
+</property>
+
+  <!-- 指定master -->
+<property>
+ <name>hbase.master</name>
+ <value>master:60000</value>
+</property>
+
