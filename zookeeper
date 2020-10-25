@@ -1,0 +1,86 @@
+一、 安装Zookeeper（过程与前面一致）
+
+1、上传解压安装包/opt
+
+cd /opt/
+
+tar -xzvf zookeeper-3.4.9.tar.gz 
+
+mkdir zookeeper
+
+mv zookeeper-3.4.9 zookeeper/zookeeper3.4
+
+2、编辑/etc/profile文件
+
+vi /etc/profile
+
+#set zookeeper environment
+
+ZK_HOME=/opt/zookeeper/zookeeper3.4
+
+PATH=$ZK_HOME/bin:$PATH
+
+export ZK_HOME PATH
+
+3、环境变量生效
+source /etc/profile
+
+4、创建所需的文件夹
+
+mkdir /opt/zookeeper/data
+
+mkdir /opt/zookeeper/datalog
+
+5、修改zoo.cfg文件
+
+在/opt/zookeeper/zookeeper3.4/conf目录下，找到zoo.cfg，如果没有则复制zoo_sample.cfg文件并重命名
+
+dataDir=/opt/zookeeper/data
+
+dataLogDir=/opt/zookeeper/dataLog
+
+server.1=master:2888:3888
+
+server.2=node1:2888:3888
+
+server.3=node2:2888:3888
+
+6、将主节点的配置同步到从节点
+
+同步zookeeper文件
+
+scp -r /opt/zookeeper/zookeeper3.4/ root@node1:/opt/zookeeper/
+
+scp -r /opt/zookeeper/zookeeper3.4/ root@node2:/opt/zookeeper/
+
+同步环境变量
+
+scp /etc/profile root@node1:/etc/
+
+scp /etc/profile root@node2:/etc/
+
+7、在每个节点生成zookeeper的id
+
+在每个节点的/opt/zookeeper/data目录下
+
+主节点
+
+echo 1 >> myid
+
+从节点
+
+echo 2(3) >> myid
+
+8、启动zookeeper
+
+在！！！所有！！！服务器启动zookeeper，查看Zookeeper的状态
+
+zkService.sh start
+
+zkService.sh status
+
+停止zookeeper
+
+zkService.sh stop
+
+zookeeper安装结束！！！
