@@ -71,3 +71,21 @@ export HBASE_MANAGES_ZK=false
  <value>master:60000</value>
 </property>
 
+## 修改regionservers添加从节点
+
+node1
+node2
+
+4、将hbase同步到从节点
+
+系统环境变量同步
+
+hbase文件同步
+
+5、启动hbase
+
+start-hbase.sh
+
+stop-hbase.sh
+
+hbase安装结束！！！
